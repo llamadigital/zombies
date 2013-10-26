@@ -1,0 +1,19 @@
+h1 Create Zombie Master
+
+= form_for @zombie_master do |f|
+  - if f.object.errors.any?
+    .alert.alert-danger
+      - f.object.errors.full_messages.each do |message|
+        p 
+          = message
+
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+
+  .form-group
+    = f.label :phone
+    = f.text_field :phone, class: 'form-control'
+
+  .form-group
+    = f.submit
