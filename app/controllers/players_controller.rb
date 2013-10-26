@@ -1,11 +1,17 @@
 class PlayersController < ApplicationController
+  include PlayersHelper
+
   def new
     @player = Player.new
   end
 
   def create
     @player = Player.new(player_params)
+    @player.health = 100
+    @player.hunger = 100
+
     if @player.save
+      session[:player_id] = @player.id;
       redirect_to @player
     else
       render :new
@@ -14,6 +20,16 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.find(params[:id])
+  end
+
+  def tick
+    if current_player
+      current_player.tick
+      current_player.save
+
+      render text: current_player.hunger.to_s + '<br />' +
+        current_player.health.to_s
+    end
   end
 
   private
