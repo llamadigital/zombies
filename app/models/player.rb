@@ -1,6 +1,10 @@
 class Player < ActiveRecord::Base
   validates :name, :phone, presence: true
 
+  def self.human
+    where(type: nil)
+  end
+
   def health=(health)
     super(health)
     handle_death

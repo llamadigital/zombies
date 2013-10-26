@@ -2,11 +2,26 @@ h1 Commander: #{@commander.name}
 
 h2 Players
 
+- if flash[:notice]
+  .alert = flash[:notice]
+
+= form_tag broadcast_commander_path(:current) do
+  .input-append
+    = text_field_tag :message
+    = submit_tag 'Broadcast to all players', class: 'btn btn-success'
+
 table.table
   tr
     th Name
+    th Options
   - @players.each do |player|
     tr
       td
         = player.name
+      td 
+        = form_tag message_commander_path(:current) do
+          .input-append
+            = text_field_tag :message
+            = hidden_field_tag :player_id, player.id
+            = submit_tag 'Message', class: 'btn btn-success'
 
