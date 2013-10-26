@@ -12,7 +12,7 @@ class PlayersController < ApplicationController
 
     if @player.save
       session[:player_id] = @player.id;
-      redirect_to @player
+      redirect_to dash_path
     else
       render :new
     end
@@ -27,8 +27,7 @@ class PlayersController < ApplicationController
       current_player.tick
       current_player.save
 
-      render text: current_player.hunger.to_s + '<br />' +
-        current_player.health.to_s
+      render json: @current_player
     end
   end
 

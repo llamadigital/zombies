@@ -1,5 +1,4 @@
 Zombies::Application.routes.draw do
-  resources :players
   resources :zombie_masters do
     resources :floor_plans, module: 'zombie_masters' do
       resources :tags, module: 'floor_plans'
@@ -11,6 +10,8 @@ Zombies::Application.routes.draw do
     end
   end
   resources :commanders
+
+  get 'dash' => 'player_dashboard#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
