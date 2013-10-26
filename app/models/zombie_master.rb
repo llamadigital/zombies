@@ -1,0 +1,2 @@
+class ZombieMaster < Player
+end
