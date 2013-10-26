@@ -1,0 +1,5 @@
+INDEX VERSION 1.126+/home/valentinos/projects/zombies/android/.metadata/.plugins/org.eclipse.jdt.core
+2519134829.index
+4021304860.index
+420882607.index
+38712837.index
