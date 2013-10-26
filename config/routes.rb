@@ -1,10 +1,15 @@
 Zombies::Application.routes.draw do
+  resources :players
+  resources :zombie_masters do
+    resources :floor_plans, module: 'zombie_masters' do
+      resources :tags, module: 'floor_plans'
+    end
+  end
   resources :players do 
     collection do
       get "tick"
     end
   end
-  resources :zombie_masters
   resources :commanders
 
   get 'dash' => 'player_dashboard#index'
@@ -15,6 +20,9 @@ Zombies::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root 'application#index'
+
+  post 'api' => 'application#api'
+  get 'api' => 'application#api'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

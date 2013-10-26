@@ -1,2 +1,12 @@
 h1 Commander: #{@commander.name}
 
+h2 Players
+
+table.table
+  tr
+    th Name
+  - @players.each do |player|
+    tr
+      td
+        = player.name
+
