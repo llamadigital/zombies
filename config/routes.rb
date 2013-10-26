@@ -1,5 +1,9 @@
 Zombies::Application.routes.draw do
-  resources :players
+  resources :players do 
+    collection do
+      get "tick"
+    end
+  end
   resources :zombie_masters
   resources :commanders
 

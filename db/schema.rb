@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20131026174230) do
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "health"
+    t.integer  "hunger"
   end
 
   create_table "tags", force: true do |t|
