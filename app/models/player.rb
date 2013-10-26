@@ -3,6 +3,7 @@ class Player < ActiveRecord::Base
 
   def health=(health)
     super(health)
+    handle_death
   end
 
   def health
@@ -30,6 +31,12 @@ private
 
   def decrement_to_zero(number, decrement)
     [0, number - decrement].max
+  end
+
+  def handle_death
+    if health == 0 
+      self.type = 'Zombie'
+    end
   end
 
 end

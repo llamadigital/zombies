@@ -1,5 +1,4 @@
 Zombies::Application.routes.draw do
-  resources :players
   resources :zombie_masters do
     resources :floor_plans, module: 'zombie_masters' do
       resources :tags, module: 'floor_plans'
