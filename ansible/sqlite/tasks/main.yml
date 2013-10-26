@@ -1,0 +1,7 @@
+  - name: install sqlite3
+    apt: name={{item}} state=latest update_cache=yes
+    with_items:
+      - sqlite
+      - sqlite3-doc
+      - libsqlite3-dev
+

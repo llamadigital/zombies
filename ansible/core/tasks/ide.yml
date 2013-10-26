@@ -1,0 +1,29 @@
+---
+  - name: install usual ide packages
+    apt: name={{item}} state=latest update_cache=yes
+    with_items:
+      - build-essential
+      - vim
+      - git
+      - git-annex
+      - tig
+      - ranger
+      - htop
+      - tmux
+      - tree
+      - ack-grep
+      - exuberant-ctags
+      - curl
+      - keychain
+      - dict
+      - highlight
+      - w3m
+      - caca-utils
+      - atool
+      - libcurl4-openssl-dev
+      - python-software-properties
+      - stow
+      - markdown
+
+  - name: link ack
+    file: src=/usr/bin/ack-grep dest=/usr/local/bin/ack owner=root group=root state=link

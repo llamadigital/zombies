@@ -1,0 +1,36 @@
+---
+  - name: restart postgres
+    sudo_user: root
+    shell: service postgresql restart
+
+  - name: create app databases
+    sudo_user: postgres
+    action: postgresql_db db={{name}}{{item}} encoding='UTF-8' lc_collate='en_GB.UTF-8' lc_ctype='en_GB.UTF-8'
+    with_items:
+     - ""
+     - _development
+     - _test
+
+  - name: create app database user
+    sudo_user: postgres
+    action: postgresql_user db={{name}}{{item}} user={{name}} password={{password}} priv=ALL
+    with_items:
+     - ""
+     - _development
+     - _test
+
+  - name: add database user privilege
+    sudo_user: postgres
+    action: postgresql_user user={{name}} role_attr_flags=SUPERUSER,CREATEDB
+
+  - name: allow md5 passwords for local users
+    sudo_user: root
+    shell: sed -i 's/^local\s\+all\s\+all\s\+peer/local all all md5/' /etc/postgresql/9.1/main/pg_hba.conf
+
+  - name: create pgpass
+    sudo: no
+    lineinfile: dest=~/.pgpass regexp='{{password}}$' line='*:*:*:{{name}}:{{password}}' mode=0600 create=yes
+
+  - name: restart postgres
+    sudo_user: root
+    shell: service postgresql restart

@@ -1,0 +1,4 @@
+---
+  - include: ide.yml
+  - include: locale.yml
+  - include: vagrant.yml

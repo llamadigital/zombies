@@ -1,0 +1,20 @@
+---
+  - name: install mysql packages
+    apt: name={{item}} state=latest update_cache=yes
+    with_items:
+      - mysql-server
+      - mysql-client
+      - libmysqlclient-dev
+      - python-mysqldb
+     
+  - name: create mysql databases
+    mysql_db: name={{item}} encoding=utf8 collation=utf8_general_ci
+    with_items:
+      databases
+    when: databases is defined 
+       
+  - name: create mysql users
+    mysql_user: name={{item}} password={{item}} priv=*.*:ALL
+    with_items:
+      users 
+    when: users is defined 

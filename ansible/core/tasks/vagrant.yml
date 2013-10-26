@@ -1,0 +1,3 @@
+---
+  - name: set vagrant user to nopasswd
+    lineinfile: dest=/etc/sudoers state=present regexp='^vagrant' line='vagrant ALL=(ALL) NOPASSWD:ALL'

@@ -1,0 +1,16 @@
+---
+ - hosts: vagrant
+   sudo: yes
+
+   roles:
+     - ansible/core
+     - { role: ansible/ruby, version: ruby2.0 }
+     - ansible/rails
+     - ansible/postgresql
+     - { role: ansible/app, name: zombie_game, password: zombie_game }
+     - ansible/nodejs
+
+   # tasks: 
+   #   - name: bundle
+   #     command: bundle chdir=/home/vagrant/source
+

@@ -1,0 +1,69 @@
+ #- by james 2013-08-22
+ # v1
+
+
+ - name: install php=pear
+   command: apt-get install php-pear
+
+ - name: install xdebug
+   command: pecl install xdebug
+   ignore_errors: yes
+   
+ - name: find and move xdebug.so to a standard location 
+   command: sudo find /usr/lib/php5 -name xdebug.so -exec cp {} /usr/lib/php5/xdebug.so ';'      
+
+ - name: include xdebug.so in php.ini file
+   ini_file: dest=/etc/php5/apache2/php.ini
+             section=XDebug
+             option=zend_extension
+             value="/usr/lib/php5/xdebug.so"
+             backup=yes           
+                       
+ - name: xdebug default_enable        
+   ini_file: dest=/etc/php5/apache2/php.ini
+             section=XDebug
+             option=xdebug.default_enable
+             value=1
+             backup=yes
+             
+ - name: xdebug enable remote          
+   ini_file: dest=/etc/php5/apache2/php.ini
+             section=XDebug
+             option=xdebug.remote_enable
+             value=1
+             backup=yes
+             
+ - name: xdebug remote_handler       
+   ini_file: dest=/etc/php5/apache2/php.ini
+             section=XDebug
+             option=xdebug.remote_handler
+             value=dbgp
+             backup=yes
+             
+ - name: xdebug remote_host to host           
+   ini_file: dest=/etc/php5/apache2/php.ini
+             section=XDebug
+             option=xdebug.remote_host
+             value=192.168.69.1
+             backup=yes
+             
+ - name: xdebug remote_port   
+   ini_file: dest=/etc/php5/apache2/php.ini
+             section=XDebug
+             option=xdebug.remote_port
+             value=9000
+             backup=yes
+             
+ - name: xdebug remote_autostart
+   ini_file: dest=/etc/php5/apache2/php.ini
+             section=XDebug
+             option=xdebug.remote_autostart
+             value=1
+             backup=yes    
+ 
+ - name: xdebug log file  
+   ini_file: dest=/etc/php5/apache2/php.ini
+             section=XDebug
+             option=xdebug.remote_log
+             value="/var/log/xdebug.log"
+             backup=yes

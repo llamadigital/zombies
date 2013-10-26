@@ -1,0 +1,13 @@
+- name: install PHP
+  apt: name={{item}} state=latest update_cache=yes
+  with_items:
+    - php5
+    - php5-dev
+    - php5-curl
+    - php5-cgi
+    - php5-cli
+    - php5-gd
+    - php5-mysql
+    - libapache2-mod-php5
+    
+- include: xdebug.yml

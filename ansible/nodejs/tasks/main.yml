@@ -1,0 +1,14 @@
+---
+  - name: nodejs dependencies
+    apt: name={{item}} state=latest update_cache=yes
+    with_items:
+     - python-software-properties
+     - python
+     - g++
+     - make
+
+  - name: brightbox ruby repo
+    apt_repository: repo=ppa:chris-lea/node.js
+
+  - name: install nodejs from brightbox repo (this pkg includes nodejs-dev)
+    apt: name=nodejs state=latest update_cache=yes

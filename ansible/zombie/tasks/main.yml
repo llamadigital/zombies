@@ -1,0 +1,3 @@
+- name: zombie
+  npm: name=zombie version=1.4.1 global=yes
+
