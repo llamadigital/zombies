@@ -12,7 +12,7 @@ class PlayersController < ApplicationController
 
     if @player.save
       session[:player_id] = @player.id;
-      redirect_to @player
+      redirect_to dash_path
     else
       render :new
     end

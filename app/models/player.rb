@@ -19,12 +19,12 @@ class Player < ActiveRecord::Base
   end
 
   def tick_hunger
-    adjusted_hunger = decrement_to_zero(hunger, 4)
+    adjusted_hunger = decrement_to_zero(hunger, 2)
     self.hunger = adjusted_hunger
   end
 
   def tick_health
-    self.health = decrement_to_zero(health, 2)
+    self.health = decrement_to_zero(health, 1)
   end
 
 private

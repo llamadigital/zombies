@@ -8,6 +8,6 @@ updatePlayer = ->
 timer = -> 
   setTimeout -> 
     updatePlayer()
-  ,5000
+  ,2500
 
 timer()
