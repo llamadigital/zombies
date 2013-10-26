@@ -15,6 +15,7 @@ module ZombieMasters
 
     def show
       @floor_plan = FloorPlan.find(params[:id])
+      @tags = Tag.all
     end
 
     def destroy

@@ -11,7 +11,7 @@ module ZombieMasters
       if @tag.save
         redirect_to zombie_master_tags_path(:current)
       else
-        render :new
+        redirect_to zombie_master_floor_plan_path(params[:floor_plan])
       end
     end
 

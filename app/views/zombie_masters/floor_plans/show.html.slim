@@ -5,6 +5,6 @@ table.floor-plan style = "background-image: url(#{@floor_plan.image.thumb('1170x
   - 50.times do |y_count|
     tr
       - 50.times do |x_count|
-        td onclick = "window.location = '/zombie_masters/current/floor_plans/#{@floor_plan.id}/tags/new?x=#{x_count}&y=#{y_count}'; return false;"
+        td onclick = "window.location = '/zombie_masters/current/floor_plans/#{@floor_plan.id}/tags/new?x=#{x_count}&y=#{y_count}'; return false;" class = ('tagged' if (@tag.x == x_count && @tag.y == y_count))
           | &nbsp;
           

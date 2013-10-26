@@ -15,15 +15,18 @@ module ZombieMasters
         else
         end
       end
+
+      def show
+      end
       
       private
 
       def tag_params
-        params.require(:tag).permit(:x, :y)
+        params.require(:tag).permit(:x, :y, :floor_plan_id)
       end
 
       def load_floor_plan
-        
+        @floor_plan = FloorPlan.find(params[:floor_plan_id])
       end
 
     end
