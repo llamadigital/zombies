@@ -23,6 +23,7 @@ Vagrant.configure('2') do |config|
     ansible.playbook = 'playbook.yml'
     ansible.inventory_path = 'vagrant_host'
     ansible.verbose = true
+    ansible.verbose = "v"
   end
 
 end
