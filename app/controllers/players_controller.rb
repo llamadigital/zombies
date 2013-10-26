@@ -27,8 +27,7 @@ class PlayersController < ApplicationController
       current_player.tick
       current_player.save
 
-      render text: current_player.hunger.to_s + '<br />' +
-        current_player.health.to_s
+      render json: @current_player
     end
   end
 

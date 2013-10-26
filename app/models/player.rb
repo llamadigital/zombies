@@ -1,6 +1,14 @@
 class Player < ActiveRecord::Base
   validates :name, :phone, presence: true
 
+  def health=(health)
+    super(health)
+  end
+
+  def health
+    super
+  end
+
   def tick
     if hunger > 0
       tick_hunger
