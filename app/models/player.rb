@@ -27,6 +27,10 @@ class Player < ActiveRecord::Base
     self.health = decrement_to_zero(health, 1)
   end
 
+  def as_json(options={})
+    super(options.merge({:methods => :type}))
+  end
+
 private
 
   def decrement_to_zero(number, decrement)
