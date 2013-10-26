@@ -20,6 +20,6 @@ class ZombieMastersController < ApplicationController
   private
 
   def zombie_master_params
-    params.require(:zombie_master).permit(:name)
+    params.require(:zombie_master).permit(:name, :phone)
   end
 end
