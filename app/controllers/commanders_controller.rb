@@ -19,6 +19,7 @@ class CommandersController < ApplicationController
 
   def show
     @messager = Messager.new
+    @players = Player.where(type: nil)
   end
 
   private
