@@ -5,6 +5,11 @@ Zombies::Application.routes.draw do
       resources :tags, module: 'floor_plans'
     end
   end
+  resources :players do 
+    collection do
+      get "tick"
+    end
+  end
   resources :commanders
 
   # The priority is based upon order of creation: first created -> highest priority.

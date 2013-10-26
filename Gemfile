@@ -51,4 +51,7 @@ gem "pry"
 gem "slim-rails"
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', '~>0.9.15'
+gem "clockworksms"
+gem "nokogiri"
+gem "figaro"
 

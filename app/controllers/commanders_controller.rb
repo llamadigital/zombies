@@ -18,6 +18,7 @@ class CommandersController < ApplicationController
   end
 
   def show
+    @messager = Messager.new
   end
 
   private
