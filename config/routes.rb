@@ -19,6 +19,9 @@ Zombies::Application.routes.draw do
   # root 'welcome#index'
   root 'application#index'
 
+  post 'api' => 'application#api'
+  get 'api' => 'application#api'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
