@@ -8,7 +8,6 @@ gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
-gem 'less-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -17,7 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -33,8 +32,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem "twitter-bootstrap-rails", "~> 2.2.8"
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -46,3 +43,10 @@ gem "twitter-bootstrap-rails", "~> 2.2.8"
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
+gem "pry"
+gem "slim-rails"
+
