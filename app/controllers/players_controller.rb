@@ -31,6 +31,16 @@ class PlayersController < ApplicationController
     end
   end
 
+  def index
+    @players = Player.where(type: nil)
+  end
+
+  def assume
+    player = Player.find(params[:id])
+    session[:player_id] = player.id
+    redirect_to player
+  end
+
   private
 
   def player_params

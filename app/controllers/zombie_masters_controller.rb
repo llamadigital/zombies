@@ -21,6 +21,12 @@ class ZombieMastersController < ApplicationController
     @floor_plans = FloorPlan.all
   end
 
+  def assume
+    zombie_master = ZombieMaster.find(params[:id])
+    session[:player_id] = zombie_master.id
+    redirect_to zombie_master
+  end
+
   private
 
   def zombie_master_params

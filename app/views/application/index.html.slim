@@ -1,1 +1,18 @@
-h1 Hello World
+h1 Zombie Game
+
+.row.btn-group
+  = link_to 'New player', new_player_path, class: 'btn btn-primary'
+  = link_to 'Existing player', players_path, class: 'btn btn-warning'
+p
+.row
+  - if Commander.any?
+    = link_to 'Existing commander', assume_commander_path(Commander.first), class: 'btn btn-warning'
+  - else
+    = link_to 'New commander', new_commander_path, class: 'btn btn-primary'
+p
+.row
+  - if ZombieMaster.any?
+    = link_to 'Existing zombie master', assume_zombie_master_path(ZombieMaster.first), class: 'btn btn-warning'
+  - else
+    = link_to 'New zombie master', new_zombie_master_path, class: 'btn btn-primary'
+
