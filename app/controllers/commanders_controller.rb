@@ -1,7 +1,7 @@
 class CommandersController < ApplicationController
   include CommanderHelper
 
-  before_filter :load_commander, only: :show
+  before_filter :load_commander, only: [:show, :message, :broadcast]
 
   def new
     @commander = Commander.new
@@ -18,13 +18,36 @@ class CommandersController < ApplicationController
   end
 
   def show
-    @messager = Messager.new
     @players = Player.where(type: nil)
+  end
+
+  def message
+    @player = Player.find(params[:player_id])
+    @messenger = Messenger.new
+    if @messenger.message(@player.phone, params[:message])
+      redirect_to @commander, notice: 'Message sent'
+    else 
+      redirect_to @commander, notice: @messenger.error
+    end
+  end
+
+  def broadcast
+    @messenger = Messenger.new
+    Player.human.each do |player|
+      @messenger.message(player.phone, params[:message])
+    end
+    redirect_to @commander, notice: 'Message broadcast'
+  end
+
+  def assume
+    commander = Commander.find(params[:id])
+    session[:player_id] = commander.id
+    redirect_to commander
   end
 
   private
 
   def commander_params
-    params.require(:commander).permit(:name)
+    params.require(:commander).permit(:name, :phone)
   end
 end

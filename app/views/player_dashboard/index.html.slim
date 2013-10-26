@@ -1,0 +1,20 @@
+h1 Stats
+
+div
+  span Hunger: 
+  span#hunger #{@player.hunger}
+
+/div.progress.progress-striped
+  div.progress-bar.progress-bar-success(role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%")
+    span.sr-only 40% Complete
+
+div
+  span Health: 
+  span#health #{@player.health}
+
+- if @player.type == 'Zombie'
+  - image = '/assets/zombie.png'
+- else
+  - image = "http://doomguy.herokuapp.com/damage/#{100 - @player.health}.gif"
+
+img#player_image src='#{image}'/

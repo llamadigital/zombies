@@ -1,5 +1,7 @@
-class Messager
+class Messenger
   require 'clockwork'
+
+  attr_accessor :error
 
   def initialize
     key = ENV['CLOCKWORK_KEY']
@@ -11,9 +13,10 @@ class Messager
     response = message.deliver
 
     if response.success
-      response.message_id
+      true
     else
-      response.error_code
+      self.error = response.error_description
+      false
     end
   end
 

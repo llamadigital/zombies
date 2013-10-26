@@ -1,16 +1,29 @@
 Zombies::Application.routes.draw do
-  resources :players
   resources :zombie_masters do
     resources :floor_plans, module: 'zombie_masters' do
       resources :tags, module: 'floor_plans'
+    end
+    member do
+      get :assume
     end
   end
   resources :players do 
     collection do
       get "tick"
     end
+    member do
+      get 'assume'
+    end
   end
-  resources :commanders
+  resources :commanders do
+    member do
+      get :assume
+      post :message
+      post :broadcast
+    end
+  end
+
+  get 'dash' => 'player_dashboard#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -19,8 +32,10 @@ Zombies::Application.routes.draw do
   # root 'welcome#index'
   root 'application#index'
 
-  post 'api' => 'application#api'
-  get 'api' => 'application#api'
+  post 'api/bluetooth/:id' => 'api#bluetooth'
+  get 'api/bluetooth/:id' => 'api#bluetooth'
+  post 'api/tag/:id' => 'api#tag'
+  get 'api/tag/:id' => 'api#tag'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
