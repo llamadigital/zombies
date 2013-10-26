@@ -11,3 +11,10 @@ div
 div
   span Health: 
   span#health #{@player.health}
+
+- if @player.type == 'Zombie'
+  - image = '/assets/zombie.png'
+- else
+  - image = "http://doomguy.herokuapp.com/damage/#{100 - @player.health}.gif"
+
+img#player_image src='#{image}'/
