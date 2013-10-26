@@ -1,0 +1,10 @@
+h1 Floor Plan
+h2 = @floor_plan.name
+
+table.floor-plan style = "background-image: url(#{@floor_plan.image.thumb('1170x').url});"
+  - 50.times do |y_count|
+    tr
+      - 50.times do |x_count|
+        td onclick = "window.location = '/zombie_masters/current/floor_plans/#{@floor_plan.id}/tags/new?x=#{x_count}&y=#{y_count}'; return false;"
+          | &nbsp;
+          

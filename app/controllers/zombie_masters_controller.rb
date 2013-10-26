@@ -17,6 +17,10 @@ class ZombieMastersController < ApplicationController
     end
   end
 
+  def show
+    @floor_plans = FloorPlan.all
+  end
+
   private
 
   def zombie_master_params

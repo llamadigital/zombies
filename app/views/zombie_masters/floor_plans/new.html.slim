@@ -1,0 +1,19 @@
+h1 New floor plan
+
+= form_for @floor_plan, url: zombie_master_floor_plans_path(:current) do |f|
+  - if f.object.errors.any?
+    .alert.alert-danger
+      - f.object.errors.full_messages.each do |message|
+        p
+          = message
+
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+
+  .form-group
+    = f.label :image
+    = f.file_field :image, class: 'form-control'
+
+  .form-control
+    = f.submit

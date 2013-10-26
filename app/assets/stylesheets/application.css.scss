@@ -13,5 +13,12 @@
  */
 
 table.floor-plan {
+  width: 100%;
   background-repeat: no-repeat;
+  tr {
+    td {
+      cursor: pointer;
+      width: 2%;
+    }
+  }
 }

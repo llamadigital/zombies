@@ -1,1 +1,18 @@
 h1 Zombie Master #{@zombie_master.name}
+
+h2 Floor Plans
+
+table.table
+  tr
+    th Name
+    th Options
+  - @floor_plans.each do |floor_plan|
+    tr
+      td = floor_plan.name
+      td
+        = link_to 'View', zombie_master_floor_plan_path(:current, floor_plan), class: 'btn btn-warning'
+        |  
+        = link_to 'Delete', zombie_master_floor_plan_path(:current, floor_plan), method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger'
+
+= link_to 'Add a floor plan', new_zombie_master_floor_plan_path(:current), class: 'btn btn-success'
+
