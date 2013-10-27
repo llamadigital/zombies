@@ -4,7 +4,7 @@ class ApiController < ApplicationController
   protect_from_forgery except: [:tag, :bluetooth]
 
   def tag
-    player = Player.find(:tag_id => params[:id])
+    player = Player.find_by_tag_id(params[:id])
 
     if player
       render text: infectshow_players_path(id: player.id)
