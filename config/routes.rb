@@ -19,6 +19,7 @@ Zombies::Application.routes.draw do
       get :assume
     end
   end
+
   resources :players do 
     collection do
       get "tick"
