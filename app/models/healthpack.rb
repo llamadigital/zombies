@@ -1,7 +1,7 @@
 class Healthpack < Item
 
   def use
-    player.health = player.health + 50
+    player.add_health(50)
   end
 
 end

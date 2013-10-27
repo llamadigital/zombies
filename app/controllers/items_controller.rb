@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
     item.pickup current_player
     item.use
 
-    current_player.save
+    item.player.save
 
     redirect_to dash_path
   end

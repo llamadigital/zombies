@@ -23,6 +23,14 @@ class Player < ActiveRecord::Base
     end
   end
 
+  def add_health(add_health)
+    self.health = increment_to_max(health, add_health, 100)
+  end
+
+  def add_hunger(add_hunger)
+    self.health = increment_to_max(hunger, add_hunger, 100)
+  end
+
   def tick_hunger
     adjusted_hunger = decrement_to_zero(hunger, 2)
     self.hunger = adjusted_hunger
@@ -40,6 +48,10 @@ private
 
   def decrement_to_zero(number, decrement)
     [0, number - decrement].max
+  end
+
+  def increment_to_max(number, increment, max)
+    [max, number + increment].min
   end
 
   def handle_death
