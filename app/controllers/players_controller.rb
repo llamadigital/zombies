@@ -41,6 +41,11 @@ class PlayersController < ApplicationController
     redirect_to dash_path
   end
 
+  def arrive_at_base
+    current_player.hunger = 100
+    render json: @current_player
+  end
+
   private
 
   def player_params
