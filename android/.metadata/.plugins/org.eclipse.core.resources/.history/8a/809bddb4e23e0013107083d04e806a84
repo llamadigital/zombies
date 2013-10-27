@@ -200,13 +200,7 @@ public class MainActivity extends Activity {
 
     private void setNoteBody(String arg) {
     	if(mResumed){
-    		String url = "";
-    		try{
-    			Integer.parseInt(arg);
-    			url = getJsonRequest(baseUrl + "api/tag/" + arg) ;
-    		}catch(Exception e){
-    			url = baseUrl + arg;
-    		}
+	    	String url = getJsonRequest(baseUrl + "/api/tag/" + arg);
 	        webView.getSettings().setJavaScriptEnabled(true);
 	        webView.loadUrl(url);
 	        mResumed = false;
@@ -214,7 +208,6 @@ public class MainActivity extends Activity {
     }
     
     private String getJsonRequest(String url){
-    	Log.i("Tag id",url);
     	HttpClient httpClient = new DefaultHttpClient();
     	HttpPost httpPost = new HttpPost(url);
     	// Depends on your web service

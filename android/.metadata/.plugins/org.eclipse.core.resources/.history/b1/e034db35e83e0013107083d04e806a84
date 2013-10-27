@@ -207,6 +207,7 @@ public class MainActivity extends Activity {
     		}catch(Exception e){
     			url = baseUrl + arg;
     		}
+
 	        webView.getSettings().setJavaScriptEnabled(true);
 	        webView.loadUrl(url);
 	        mResumed = false;

@@ -7,6 +7,8 @@ Vagrant.configure('2') do |config|
 
   config.vm.box = 'raring-server-cloudimg-amd64-vagrant-disk1'
   config.vm.network :private_network, ip: '192.168.69.69'
+  
+  config.vm.network "forwarded_port", guest: 3000, host: 27015
 
   config.vm.synced_folder '~', '/home/master'
   config.vm.synced_folder '.', '/home/vagrant/source', :nfs => true
