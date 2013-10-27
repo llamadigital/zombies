@@ -32,12 +32,25 @@ class PlayersController < ApplicationController
   end
 
   def index
-    @players = Player.where(type: nil)
+    @players = Player.where(
+      "type IS NULL or type = 'Zombie'");
   end
 
   def assume
     player = Player.find(params[:id])
     session[:player_id] = player.id
+    redirect_to dash_path
+  end
+
+  def infectshow
+    @infect_player = Player.find(params[:id])
+  end
+
+  def infect
+    @infect_player = Player.find(params[:id])
+    current_player.infect(@infect_player)
+    @infect_player.save
+
     redirect_to dash_path
   end
 

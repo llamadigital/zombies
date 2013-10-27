@@ -58,6 +58,14 @@ class Player < ActiveRecord::Base
     self.save
   end
 
+  def infect(player_to_infect)
+    if self.type == "Zombie"
+      player_to_infect.type = "Zombie"
+      player_to_infect.health = 0
+      player_to_infect.hunger = 0
+    end
+  end
+
 private
 
   def decrement_to_zero(number, decrement)

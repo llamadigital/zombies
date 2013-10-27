@@ -23,6 +23,8 @@ Zombies::Application.routes.draw do
   resources :players do 
     collection do
       get "tick"
+      get "infectshow"
+      post "infect"
     end
     member do
       get 'assume'
