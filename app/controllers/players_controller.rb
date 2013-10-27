@@ -44,7 +44,7 @@ class PlayersController < ApplicationController
   def arrive_at_base
     current_player.hunger = 100
     current_player.save
-    redirect_to dash_path
+    redirect_to base_path
   end
 
   private

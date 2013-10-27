@@ -38,6 +38,13 @@ Zombies::Application.routes.draw do
     end
   end
 
+  resources :base do
+    member do
+      get :index
+      post :items
+    end
+  end
+
   get 'dash' => 'player_dashboard#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

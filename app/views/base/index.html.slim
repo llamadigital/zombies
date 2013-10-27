@@ -1,0 +1,12 @@
+h1 Base
+h2 = @player.name
+p Select items to leave at the base
+= form_tag items_base_path(:current), method: 'post'  do |f|
+  - @items.each do |item|
+    = check_box_tag('item_ids[]', item.id, false, {multiple: true}) 
+    = label_tag(:item, item.type)
+  = submit_tag 'Leave items at base', class: 'btn'
+h2 Base items
+= @commander_items.each do |item|
+  p = item.type.to_s
+div = link_to 'Back', root_path
