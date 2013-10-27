@@ -9,7 +9,11 @@ Zombies::Application.routes.draw do
 
   resources :zombie_masters do
     resources :floor_plans, module: 'zombie_masters' do
-      resources :tags, module: 'floor_plans'
+      resources :tags, module: 'floor_plans' do
+        member do
+          get :assign
+        end
+      end
     end
     member do
       get :assume

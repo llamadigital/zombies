@@ -34,6 +34,19 @@ module ZombieMasters
         render action: :show
       end
 
+      def assign
+        @tag = Tag.find(params[:id])
+        @tag.item.destroy if @tag.item
+        item = eval(params[:type]).new
+        item.tag = @tag
+        if item.save
+          flash.now[:notice] = 'Updated'
+        else 
+          flash.now[:alert] = 'Problem'
+        end
+        render action: :show
+      end
+
       private
 
       def tag_params
