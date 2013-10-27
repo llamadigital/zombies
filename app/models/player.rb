@@ -23,21 +23,28 @@ class Player < ActiveRecord::Base
     end
   end
 
-  def add_health(add_health)
-    self.health = increment_to_max(health, add_health, 100)
+  def add_health(value)
+    self.health = increment_to_max(health, value, 100)
   end
 
-  def add_hunger(add_hunger)
-    self.hunger = increment_to_max(hunger, add_hunger, 100)
+  def add_hunger(value)
+    self.hunger = increment_to_max(hunger, value, 100)
   end
 
-  def tick_hunger
-    adjusted_hunger = decrement_to_zero(hunger, 2)
-    self.hunger = adjusted_hunger
+  def remove_hunger(value)
+    self.hunger = decrement_to_zero(hunger, value)
+  end
+
+  def remove_health(value)
+    self.health = decrement_to_zero(health, value)
   end
 
   def tick_health
-    self.health = decrement_to_zero(health, 1)
+    remove_health(1)
+  end
+
+  def tick_hunger
+    remove_hunger(2)
   end
 
   def as_json(options={})
