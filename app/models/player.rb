@@ -28,7 +28,7 @@ class Player < ActiveRecord::Base
   end
 
   def add_hunger(add_hunger)
-    self.health = increment_to_max(hunger, add_hunger, 100)
+    self.hunger = increment_to_max(hunger, add_hunger, 100)
   end
 
   def tick_hunger

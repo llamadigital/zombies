@@ -3,7 +3,9 @@ class Item < ActiveRecord::Base
   belongs_to :tag
 
   def pickup(player)
-    self.player_id = player.id
+    if player.type != "Zombie"
+      self.player_id = player.id
+    end
   end
 
 end
