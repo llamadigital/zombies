@@ -11,10 +11,11 @@ class Trap < Item
 
   def use
     player.remove_health(50)
+    'Its a trap!'
   end
 
   def colour
-    'green'
+    'red'
   end
 
 end

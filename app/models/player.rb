@@ -1,6 +1,16 @@
 class Player < ActiveRecord::Base
   validates :name, :phone, presence: true
   has_many :items
+  belongs_to :tag
+
+  attr_accessor :tag_ref
+  
+  after_create do
+    t = Tag.new
+    t.ref = self.tag_ref
+    self.tag = t
+    self.save
+  end
 
   def self.human
     where(type: nil)
@@ -56,6 +66,14 @@ class Player < ActiveRecord::Base
     self.y = tag.y
     self.floorplan_id = tag.floorplan_id
     self.save
+  end
+
+  def infect(player_to_infect)
+    if self.type == "Zombie"
+      player_to_infect.type = "Zombie"
+      player_to_infect.health = 0
+      player_to_infect.hunger = 0
+    end
   end
 
 private

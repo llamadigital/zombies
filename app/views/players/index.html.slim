@@ -5,5 +5,7 @@ table.table
     tr
       td 
         = player.name
+      td 
+        = player.type
       td
         = link_to 'Become player', assume_player_path(player), class: 'btn btn-warning'

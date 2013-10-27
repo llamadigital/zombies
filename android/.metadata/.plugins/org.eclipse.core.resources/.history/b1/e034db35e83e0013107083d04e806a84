@@ -46,7 +46,7 @@ import org.apache.http.util.EntityUtils;
 
 public class MainActivity extends Activity {
 	private WebView webView;
-    private static final String baseUrl = "http://172.20.10.2:27015/";
+    private static final String baseUrl = "http://172.20.10.7:27014/";
     private static final String TAG = "Zombie";
     private boolean isInsideBluetoothArea = true;
     private String bluetoothAddressArea = "00:22:58:C9:09:42";
@@ -207,6 +207,7 @@ public class MainActivity extends Activity {
     		}catch(Exception e){
     			url = baseUrl + arg;
     		}
+
 	        webView.getSettings().setJavaScriptEnabled(true);
 	        webView.loadUrl(url);
 	        mResumed = false;

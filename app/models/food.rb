@@ -6,6 +6,7 @@ class Food < Item
 
   def use
     player.add_hunger(100)
+    'You gain 100 hunger'
   end
 
   def colour

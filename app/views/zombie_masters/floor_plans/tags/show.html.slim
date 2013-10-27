@@ -18,11 +18,12 @@ table.table
     td
       = link_to 'Remove this tag', zombie_master_floor_plan_tag_path(:current, @tag.floor_plan, @tag), method: :delete, class: 'btn btn-primary', confirm: 'Are you sure?'
 
-  - [Healthpack, Food].each do |type|
+  - [Healthpack, Food, Trap, CarPart].each do |type|
+    - instance = type.new
     - unless @tag.item && @tag.item.type == type.to_s
       tr 
         td
-          = link_to "Turn into #{type.to_s.humanize}", assign_zombie_master_floor_plan_tag_path(:current, @tag.floor_plan, @tag, type: type), class: 'btn btn-success'
+          = link_to "Turn into #{instance.item_name}", assign_zombie_master_floor_plan_tag_path(:current, @tag.floor_plan, @tag, type: type), class: 'btn btn-success'
 
 
 hr

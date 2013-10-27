@@ -2,7 +2,7 @@ Zombies::Application.routes.draw do
   resources :items  do
     member do
       get :show
-      post :pickup
+      patch :pickup
       patch :use
     end
   end
@@ -23,6 +23,8 @@ Zombies::Application.routes.draw do
   resources :players do 
     collection do
       get "tick"
+      get "infectshow"
+      post "infect"
     end
     member do
       get 'assume'
