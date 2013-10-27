@@ -3,7 +3,19 @@
 
 h1 = @item.item_name
 
-= form_for @item, :url => use_item_path(@item) do |f|
+- if flash[:notice]
+  .alert
+    = flash[:notice]
+- if flash[:alert]
+  .alert.alert-danger
+    = flash[:alert]
 
-  .form-group
-    = f.submit 'Use', class: 'btn btn-success'
+- if @item.usable?
+  = form_for @item, :url => use_item_path(@item) do |f|
+    .form-group
+      = f.submit 'Use', class: 'btn btn-success'
+
+- if @item.pickupable?
+  = form_for @item, :url => pickup_item_path(@item) do |f|
+    .form-group
+      = f.submit 'Pickup', class: 'btn btn-success'

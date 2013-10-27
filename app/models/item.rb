@@ -8,4 +8,17 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def pickup!(player)
+    pickup(player)
+    save!
+  end
+
+  def usable?
+    true
+  end
+
+  def pickupable?
+    true
+  end
+
 end
