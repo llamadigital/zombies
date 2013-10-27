@@ -202,11 +202,9 @@ public class MainActivity extends Activity {
     	if(mResumed){
     		String url = "";
     		try{
-    			Integer.parseInt(arg);
-    			url = getJsonRequest(baseUrl + "api/tag/" + arg) ;
-    		}catch(Exception e){
-    			url = baseUrl + arg;
+    			
     		}
+	    	String url = getJsonRequest(baseUrl + "api/tag/" + arg);
 	        webView.getSettings().setJavaScriptEnabled(true);
 	        webView.loadUrl(url);
 	        mResumed = false;
