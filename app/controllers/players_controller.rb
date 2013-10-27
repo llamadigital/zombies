@@ -26,7 +26,6 @@ class PlayersController < ApplicationController
     if current_player
       current_player.tick
       current_player.save
-
       render json: @current_player
     end
   end
@@ -50,7 +49,11 @@ class PlayersController < ApplicationController
     @infect_player = Player.find(params[:id])
     current_player.infect(@infect_player)
     @infect_player.save
+  end
 
+  def arrive_at_base
+    current_player.hunger = 100
+    current_player.save
     redirect_to dash_path
   end
 

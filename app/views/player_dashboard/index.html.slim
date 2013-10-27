@@ -1,6 +1,13 @@
 = content_for :javascript do
   = javascript_include_tag "player_dashboard", "data-turbolinks-track" => true 
 
+- if flash[:notice]
+  .alert.alert-success
+    = flash[:notice]
+- if flash[:alert]
+  .alert.alert-danger
+    = flash[:alert]
+
 h1 Stats
 
 div
@@ -21,3 +28,14 @@ div
   - image = "http://doomguy.herokuapp.com/damage/#{100 - @player.health}.gif"
 
 img#player_image src='#{image}'/
+
+h2 Inventory
+
+div
+  - @player.items.each do |item|
+    .row
+      .div-md-6
+        = item.item_name
+      .div-md-6
+        = form_tag use_item_path(item), method: :patch do
+          = submit_tag 'Use', class: 'btn btn-success'

@@ -2,7 +2,7 @@ Zombies::Application.routes.draw do
   resources :items  do
     member do
       get :show
-      post :pickup
+      patch :pickup
       patch :use
     end
   end
@@ -28,6 +28,7 @@ Zombies::Application.routes.draw do
     end
     member do
       get 'assume'
+      get 'arrive_at_base'
     end
   end
 
@@ -52,6 +53,7 @@ Zombies::Application.routes.draw do
   get 'api/bluetooth/:id' => 'api#bluetooth'
   post 'api/tag/:id' => 'api#tag'
   get 'api/tag/:id' => 'api#tag'
+  get 'api/base' => 'api#base'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

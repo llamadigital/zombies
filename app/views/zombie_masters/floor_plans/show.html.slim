@@ -17,9 +17,12 @@ table.floor-plan style = "background-image: url(#{@floor_plan.image.thumb('1170x
           - if tag.item
             td.tagged onclick = "window.location = '/zombie_masters/current/floor_plans/#{@floor_plan.id}/tags/#{tag.id}'; return false;" style = "color: #{tag.item.colour};"
               i.icon-circle
+              = render 'players', x: x_count, y: y_count, floorplan_id: @floor_plan.id
           - else 
             td.tagged (onclick = "window.location = '/zombie_masters/current/floor_plans/#{@floor_plan.id}/tags/#{tag.id}'; return false;")
               i.icon-circle
+              = render 'players', x: x_count, y: y_count, floorplan_id: @floor_plan.id
         - else
           td (onclick = "window.location = '/zombie_masters/current/floor_plans/#{@floor_plan.id}/tags/new?x=#{x_count}&y=#{y_count}'; return false;") 
             | &nbsp;
+            = render 'players', x: x_count, y: y_count, floorplan_id: @floor_plan.id
