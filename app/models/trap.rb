@@ -14,7 +14,7 @@ class Trap < Item
   end
 
   def colour
-    'green'
+    'red'
   end
 
 end

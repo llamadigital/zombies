@@ -2,7 +2,7 @@ Zombies::Application.routes.draw do
   resources :items  do
     member do
       get :show
-      post :pickup
+      patch :pickup
       patch :use
     end
   end
