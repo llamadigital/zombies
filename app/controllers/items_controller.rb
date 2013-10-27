@@ -10,13 +10,15 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     flash.now[:notice] = "You found a #{@item.item_name}"
-    current_player.move_to!(@item.tag)
+    if @item.tag
+      current_player.move_to!(@item.tag)
+    end
   end
 
   def use
     item = Item.find(params[:id])
     item.pickup current_player
-    item.use
+    flash[:notice] = item.use
 
     item.player.save
     item.destroy
