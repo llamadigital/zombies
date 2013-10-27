@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131027065653) do
+ActiveRecord::Schema.define(version: 20131027071721) do
 
   create_table "floorplans", force: true do |t|
     t.string   "image_uid"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20131027065653) do
     t.integer  "x"
     t.integer  "y"
     t.integer  "floorplan_id"
+    t.string   "ref"
   end
 
 end

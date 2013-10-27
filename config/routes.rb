@@ -3,7 +3,7 @@ Zombies::Application.routes.draw do
     member do
       get :show
       post :pickup
-      post :use
+      patch :use
     end
   end
 

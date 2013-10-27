@@ -1,1 +1,6 @@
 h1 = @item.type
+
+= form_for @item, :url => use_item_path(@item) do |f|
+
+  .form-group
+    = f.submit 'Use', class: 'btn btn-success'

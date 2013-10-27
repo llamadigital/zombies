@@ -4,4 +4,5 @@ class Item < ActiveRecord::Base
   def pickup(player)
     self.player_id = player.id
   end
+
 end

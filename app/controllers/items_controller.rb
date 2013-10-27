@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
   end
 
   def use
+    item = Item.find(params[:id])
     item.pickup current_player
     item.use
 
