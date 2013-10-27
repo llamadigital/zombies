@@ -1,5 +1,6 @@
 class Player < ActiveRecord::Base
   validates :name, :phone, presence: true
+  has_many :items
 
   def self.human
     where(type: nil)

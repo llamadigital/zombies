@@ -1,4 +1,12 @@
 Zombies::Application.routes.draw do
+  resources :items  do
+    member do
+      get :show
+      post :pickup
+      post :use
+    end
+  end
+
   resources :zombie_masters do
     resources :floor_plans, module: 'zombie_masters' do
       resources :tags, module: 'floor_plans'
@@ -15,6 +23,7 @@ Zombies::Application.routes.draw do
       get 'assume'
     end
   end
+
   resources :commanders do
     member do
       get :assume
