@@ -11,12 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131026214738) do
+ActiveRecord::Schema.define(version: 20131027071721) do
 
   create_table "floorplans", force: true do |t|
     t.string   "image_uid"
     t.string   "image_name"
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "items", force: true do |t|
+    t.integer  "player_id"
+    t.integer  "tag_id"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -37,6 +45,7 @@ ActiveRecord::Schema.define(version: 20131026214738) do
     t.integer  "x"
     t.integer  "y"
     t.integer  "floorplan_id"
+    t.string   "ref"
   end
 
 end

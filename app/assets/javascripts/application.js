@@ -14,4 +14,8 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
-//= require_tree .
+//= require_self
+//= require application
+//= require commander
+//= require players
+//= require zombie_master

@@ -1,10 +1,28 @@
 h1 Floor Plan
 h2 = @floor_plan.name
 
+- if flash[:notice]
+  .alert.alert-success
+    = flash[:notice]
+- if flash[:alert]
+  .alert.alert-danger
+    = flash[:alert]
+
 table.floor-plan style = "background-image: url(#{@floor_plan.image.thumb('1170x').url});"
   - 50.times do |y_count|
     tr
       - 50.times do |x_count|
-        td onclick = "window.location = '/zombie_masters/current/floor_plans/#{@floor_plan.id}/tags/new?x=#{x_count}&y=#{y_count}'; return false;" class = ('tagged' if (@tag.x == x_count && @tag.y == y_count))
-          | &nbsp;
-          
+        - tag = @tags.select{|t| t.x == x_count && t.y == y_count }.first
+        - if tag
+          - if tag.item
+            td.tagged onclick = "window.location = '/zombie_masters/current/floor_plans/#{@floor_plan.id}/tags/#{tag.id}'; return false;" style = "color: #{tag.item.colour};"
+              i.icon-circle
+              = render 'players', x: x_count, y: y_count, floorplan_id: @floor_plan.id
+          - else 
+            td.tagged (onclick = "window.location = '/zombie_masters/current/floor_plans/#{@floor_plan.id}/tags/#{tag.id}'; return false;")
+              i.icon-circle
+              = render 'players', x: x_count, y: y_count, floorplan_id: @floor_plan.id
+        - else
+          td (onclick = "window.location = '/zombie_masters/current/floor_plans/#{@floor_plan.id}/tags/new?x=#{x_count}&y=#{y_count}'; return false;") 
+            | &nbsp;
+            = render 'players', x: x_count, y: y_count, floorplan_id: @floor_plan.id

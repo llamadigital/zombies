@@ -1,0 +1,9 @@
+= content_for :javascript do
+  = javascript_include_tag "player_dashboard", "data-turbolinks-track" => true 
+
+h1 = @item.item_name
+
+= form_for @item, :url => use_item_path(@item) do |f|
+
+  .form-group
+    = f.submit 'Use', class: 'btn btn-success'

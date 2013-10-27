@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  player_id: 1
+  tag_id: 1
+  type: 
+
+two:
+  player_id: 1
+  tag_id: 1
+  type: 

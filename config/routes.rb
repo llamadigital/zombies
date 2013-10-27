@@ -1,20 +1,35 @@
 Zombies::Application.routes.draw do
+  resources :items  do
+    member do
+      get :show
+      post :pickup
+      patch :use
+    end
+  end
+
   resources :zombie_masters do
     resources :floor_plans, module: 'zombie_masters' do
-      resources :tags, module: 'floor_plans'
+      resources :tags, module: 'floor_plans' do
+        member do
+          get :assign
+        end
+      end
     end
     member do
       get :assume
     end
   end
+
   resources :players do 
     collection do
       get "tick"
     end
     member do
       get 'assume'
+      get 'arrive_at_base'
     end
   end
+
   resources :commanders do
     member do
       get :assume
@@ -36,6 +51,7 @@ Zombies::Application.routes.draw do
   get 'api/bluetooth/:id' => 'api#bluetooth'
   post 'api/tag/:id' => 'api#tag'
   get 'api/tag/:id' => 'api#tag'
+  get 'api/base' => 'api#base'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

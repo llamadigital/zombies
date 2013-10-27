@@ -1,0 +1,3 @@
+class HealthpackController < ItemController
+
+end

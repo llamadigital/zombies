@@ -1,8 +1,31 @@
-h1 = @floor_plan.name.upcase
+h1 Tag #{@tag.x}, #{@tag.y} #{@tag.item.type.humanize if @tag.item}
 
-table.floor-plan style = "background-image: url(#{@floor_plan.image.thumb('1170x').url});"
-  - 50.times do |y_count|
-    tr
-      - 50.times do |x_count|
-        td class = ('tagged' if (@tag.x == x_count && @tag.y == y_count))
-          | &nbsp;
+- if flash[:notice]
+  .alert.alert-success
+    = flash[:notice]
+- if flash[:alert]
+  .alert.alert-danger
+    = flash[:alert]
+
+table.table
+  tr
+    td
+      = form_for @tag, url: zombie_master_floor_plan_tag_path(:current, @tag.floor_plan, @tag) do |f|
+        .input-append
+          = f.text_field :ref
+          = f.submit 'Update', class: 'btn btn-success'
+  tr
+    td
+      = link_to 'Remove this tag', zombie_master_floor_plan_tag_path(:current, @tag.floor_plan, @tag), method: :delete, class: 'btn btn-primary', confirm: 'Are you sure?'
+
+  - [Healthpack, Food, Trap].each do |type|
+    - unless @tag.item && @tag.item.type == type.to_s
+      tr 
+        td
+          = link_to "Turn into #{type.to_s.humanize}", assign_zombie_master_floor_plan_tag_path(:current, @tag.floor_plan, @tag, type: type), class: 'btn btn-success'
+
+
+hr
+
+= link_to 'Back to floor plan', zombie_master_floor_plan_path(:current, @tag.floor_plan)
+

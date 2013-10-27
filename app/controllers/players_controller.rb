@@ -26,7 +26,6 @@ class PlayersController < ApplicationController
     if current_player
       current_player.tick
       current_player.save
-
       render json: @current_player
     end
   end
@@ -38,7 +37,13 @@ class PlayersController < ApplicationController
   def assume
     player = Player.find(params[:id])
     session[:player_id] = player.id
-    redirect_to player
+    redirect_to dash_path
+  end
+
+  def arrive_at_base
+    current_player.hunger = 100
+    current_player.save
+    redirect_to dash_path
   end
 
   private

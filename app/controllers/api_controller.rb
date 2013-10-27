@@ -1,10 +1,18 @@
 class ApiController < ApplicationController
+  include PlayersHelper
+
   protect_from_forgery except: [:tag, :bluetooth]
+
   def tag
-    render text: root_url
+    tag = Tag.find_by_ref(params[:id])
+    render text: item_url(tag.item)
   end
 
   def bluetooth
     render text: root_url
+  end
+
+  def base
+    redirect_to arrive_at_base_player_path(:current)
   end
 end
