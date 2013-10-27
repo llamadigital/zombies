@@ -5,10 +5,12 @@ h2 Floor Plans
 table.table
   tr
     th Name
+    th Tags
     th Options
   - @floor_plans.each do |floor_plan|
     tr
       td = floor_plan.name
+      td = floor_plan.tags.count
       td
         = link_to 'View', zombie_master_floor_plan_path(:current, floor_plan), class: 'btn btn-warning'
         |  

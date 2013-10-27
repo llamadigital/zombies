@@ -38,7 +38,7 @@ class PlayersController < ApplicationController
   def assume
     player = Player.find(params[:id])
     session[:player_id] = player.id
-    redirect_to player
+    redirect_to dash_path
   end
 
   private

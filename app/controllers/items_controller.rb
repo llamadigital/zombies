@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    current_player.move_to!(@item.tag)
   end
 
   def use

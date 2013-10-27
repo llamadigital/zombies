@@ -18,7 +18,7 @@ table.table
     td
       = link_to 'Remove this tag', zombie_master_floor_plan_tag_path(:current, @tag.floor_plan, @tag), method: :delete, class: 'btn btn-primary', confirm: 'Are you sure?'
 
-  - [Healthpack].each do |type|
+  - [Healthpack, Food].each do |type|
     - unless @tag.item && @tag.item.type == type.to_s
       tr 
         td

@@ -15,11 +15,11 @@ table.floor-plan style = "background-image: url(#{@floor_plan.image.thumb('1170x
         - tag = @tags.select{|t| t.x == x_count && t.y == y_count }.first
         - if tag
           - if tag.item
-            td.tagged onclick = "window.location = '/zombie_masters/current/floor_plans/#{@floor_plan.id}/tags/#{tag.id}'; return false;" style = "background-color: #{tag.item.colour};"
-              | &nbsp;
+            td.tagged onclick = "window.location = '/zombie_masters/current/floor_plans/#{@floor_plan.id}/tags/#{tag.id}'; return false;" style = "color: #{tag.item.colour};"
+              i.icon-circle
           - else 
             td.tagged (onclick = "window.location = '/zombie_masters/current/floor_plans/#{@floor_plan.id}/tags/#{tag.id}'; return false;")
-              | &nbsp;
+              i.icon-circle
         - else
           td (onclick = "window.location = '/zombie_masters/current/floor_plans/#{@floor_plan.id}/tags/new?x=#{x_count}&y=#{y_count}'; return false;") 
             | &nbsp;

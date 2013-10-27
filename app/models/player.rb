@@ -44,6 +44,13 @@ class Player < ActiveRecord::Base
     super(options.merge({:methods => :type}))
   end
 
+  def move_to!(tag)
+    self.x = tag.x
+    self.y = tag.y
+    self.floorplan_id = tag.floorplan_id
+    self.save
+  end
+
 private
 
   def decrement_to_zero(number, decrement)
