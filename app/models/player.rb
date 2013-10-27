@@ -1,6 +1,16 @@
 class Player < ActiveRecord::Base
   validates :name, :phone, presence: true
   has_many :items
+  belongs_to :tag
+
+  attr_accessor :tag_ref
+  
+  after_create do
+    t = Tag.new
+    t.ref = self.tag_ref
+    self.tag = t
+    self.save
+  end
 
   def self.human
     where(type: nil)
