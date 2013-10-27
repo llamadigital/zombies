@@ -11,4 +11,8 @@ class ApiController < ApplicationController
   def bluetooth
     render text: root_url
   end
+
+  def base
+    redirect_to arrive_at_base_player_path(:current)
+  end
 end

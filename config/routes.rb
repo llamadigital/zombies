@@ -51,7 +51,7 @@ Zombies::Application.routes.draw do
   get 'api/bluetooth/:id' => 'api#bluetooth'
   post 'api/tag/:id' => 'api#tag'
   get 'api/tag/:id' => 'api#tag'
-  get 'api/base' => 'players#arrive_at_base'
+  get 'api/base' => 'api#base'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

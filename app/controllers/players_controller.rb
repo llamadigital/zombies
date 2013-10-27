@@ -43,7 +43,8 @@ class PlayersController < ApplicationController
 
   def arrive_at_base
     current_player.hunger = 100
-    render json: @current_player
+    current_player.save
+    redirect_to dash_path
   end
 
   private
