@@ -26,7 +26,6 @@ class PlayersController < ApplicationController
     if current_player
       current_player.tick
       current_player.save
-
       render json: @current_player
     end
   end
